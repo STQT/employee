@@ -1,0 +1,11 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=employees
+POSTGRES_USER=NgBdVzALOPqlQwiKvUTgYxEbnQrUuxkg
+POSTGRES_PASSWORD=U7L10NnvosMgaKMdwjbAzAN0DoxdOk23DIOf7uvl1Udo7WMTca36ucr5bK91OD63
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
