@@ -9,3 +9,4 @@ POSTGRES_PASSWORD=U7L10NnvosMgaKMdwjbAzAN0DoxdOk23DIOf7uvl1Udo7WMTca36ucr5bK91OD
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
+DJANGO_SERET_KEY=secret_key

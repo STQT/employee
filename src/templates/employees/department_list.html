@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div id="department-tree">
+    <!-- Место, где будет отображаться список -->
+    <ul>
+      <li>
+        <button class="toggle" data-department="{{ root_department.id }}">+</button>
+        <span>{{ root_department.name }}</span>
+        <ul class="children hidden">
+          <!-- Сюда будут загружаться дети -->
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    $(document).ready(function () {
+      function loadChildren(departmentId, parentElement) {
+        console.log(parentElement)
+        $.ajax({
+          url: `${departmentId}/`,
+          success: function (data) {
+            console.log('Received data from server:', data);
+
+            if (data.data.length > 0) {
+              var childrenList = parentElement.find('.children');
+              childrenList.empty();
+
+              data.data.forEach(function (child) {
+                var listItem = $('<li>');
+                listItem.append('<button class="toggle" data-department="' + child.id + '">+</button>');
+                listItem.append('<span>' + child.name + '</span>');
+                var childList = $('<ul class="children hidden"></ul>');
+                listItem.append(childList);
+                childrenList.append(listItem);
+                listItem.find('.toggle').click(function () {
+                  var childId = $(this).data('department');
+                  var childElement = $(this).siblings('.children');
+                  if (childElement.hasClass('hidden')) {
+                    loadChildren(childId, childElement);
+                    $(this).text('-');
+                  } else {
+                    console.log("ONASINI EMSIN");
+                    childElement.addClass('hidden');
+                    $(this).text('+');
+                  }
+                });
+              });
+
+              childrenList.removeClass('hidden');
+            } else {
+              parentElement.find('.toggle').text('-');
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+          }
+        });
+      }
+
+      $('#department-tree').on('click', '.toggle', function () {
+        var departmentId = $(this).data('department');
+        var parentElement = $(this).parent();
+        var childrenElement = parentElement.find('.children');
+
+        if (childrenElement.hasClass('hidden')) {
+          console.log('Expanding department', departmentId);
+          loadChildren(departmentId, childrenElement);
+        } else {
+          console.log('Collapsing department', departmentId);
+          childrenElement.addClass('hidden');
+          $(this).text('+');
+        }
+      });
+    });
+  </script>
+{% endblock %}

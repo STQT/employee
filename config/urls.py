@@ -15,7 +15,7 @@ urlpatterns = [
     # User management
     path("users/", include("src.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
+    path("test/", include("src.employees.urls"), name="task"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS

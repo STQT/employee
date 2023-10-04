@@ -1,0 +1,50 @@
+/* These styles are generated from project.scss. */
+
+.alert-debug {
+  color: black;
+  background-color: white;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+/* CSS для кнопки "+" */
+.btn-link.toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  margin-right: 5px; /* Отступ между кнопкой и текстом */
+  color: #007bff; /* Цвет текста для активной кнопки */
+}
+
+/* Стили для активной кнопки "+" */
+.btn-link.toggle.active {
+  color: #dc3545; /* Изменить цвет текста при активации */
+}
+
+/* Стиль для скрытия подразделений */
+.hidden {
+  display: none !important; /* Используйте !important, чтобы убедиться, что стиль перекрывает другие стили */
+}
+
+/* Стиль для кнопки "+" */
+.toggle {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Стиль для кнопки "-", когда департамент развернут */
+.toggle.expanded:before {
+  content: "-";
+}
+
+/* Стиль для кнопки "+", когда департамент свернут */
+.toggle.collapsed:before {
+  content: "+";
+}

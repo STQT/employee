@@ -10,10 +10,10 @@ Welcome to Employees's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   howto
+   install
    pycharm/configuration
    users
-
+   employees
 
 
 Indices and tables
